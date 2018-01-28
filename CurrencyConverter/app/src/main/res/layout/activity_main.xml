@@ -59,11 +59,6 @@
                     android:text="CHOOSE CURRENCY"
                     android:textSize="13sp"></Button>
 
-                <ImageView
-                    android:id="@+id/flag"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent" />
-
                 <TextView
                     android:id="@+id/currency_code_1"
                     android:layout_width="wrap_content"
@@ -102,11 +97,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 </Button>
-
-                <ImageView
-                    android:id="@+id/flag_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent" />
 
                 <TextView
                     android:id="@+id/currency_code_2"

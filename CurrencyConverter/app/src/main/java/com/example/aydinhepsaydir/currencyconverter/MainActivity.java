@@ -110,9 +110,6 @@ public class MainActivity extends AppCompatActivity {
                 TextView currency1 = findViewById(R.id.currency_code_1);
                 currency1.setText(code); // sets the currency code when chosen
 
-                ImageView iv = findViewById(R.id.flag);
-                iv.setImageDrawable(getResources().getDrawable(flagDrawableResID)); // flag img when currency chosen
-
                 picker.dismiss();
             }
         });
@@ -127,9 +124,6 @@ public class MainActivity extends AppCompatActivity {
             public void onSelectCurrency(String name, String code, String symbol, int flagDrawableResID) {
                 TextView currency2 = findViewById(R.id.currency_code_2);
                 currency2.setText(code); // sets the currency code when chosen
-
-                ImageView iv = findViewById(R.id.flag_2);
-                iv.setImageDrawable(getResources().getDrawable(flagDrawableResID)); //flag img when currency chosen
 
                 picker.dismiss();
             }
@@ -239,6 +233,7 @@ public class MainActivity extends AppCompatActivity {
 
         String code1 = tv1.getText().toString();
         String code2 = tv2.getText().toString();
+
 
         tv1.setText(code2);
         tv2.setText(code1);
