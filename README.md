@@ -9,5 +9,4 @@ Android currency picker is a library which creates a dialog box with lots of cur
 
 My application gets live exchange rates (updated every hour) through this website: https://currencylayer.com/
 
-Due to the nature of my trial account on this site (free for 1000 queries per month) I am only capable of finding exchange rates from USD to every other currency, while at first this stumped me I quickly realised that I could use those exchange rates to work out the exchange rates of every other currency.
-
+Due to the fact that I was using a trial account I waws limited to 1000 queries per month. Another challenge was that the trial account only allows for USD conversion rates, meaning I had to calculate all other currencies using this as an anchor. 
