@@ -52,18 +52,6 @@ public class MainActivity extends AppCompatActivity {
 
         createDate(year_x, month_x, day_x);
 
-        /*
-        * an attempt to automate the process so as to remove the need for convert button
-
-        TextView ed1 = findViewById(R.id.currency_code_1);
-        String code1 = ed1.getText().toString();
-
-        TextView ed2 = findViewById(R.id.currency_code_2);
-        String code2 = ed2.getText().toString();
-
-        downloadRates(code1, code2);
-
-        */
     }
 
     //called when user clicks on "CHOOSE DATE" button
@@ -80,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // event listener for when user has chosen a date
     private DatePickerDialog.OnDateSetListener dpickerListener = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
@@ -91,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    // put into correct format for url
     public void createDate(int year, int month, int day){
         if (day_x < 10 && month_x < 10) {
             String date = "" + year_x + "-0" + month_x + "-0" + day_x;
@@ -118,10 +108,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSelectCurrency(String name, String code, String symbol, int flagDrawableResID) {
                 TextView currency1 = findViewById(R.id.currency_code_1);
-                currency1.setText(code);
+                currency1.setText(code); // sets the currency code when chosen
 
                 ImageView iv = findViewById(R.id.flag);
-                iv.setImageDrawable(getResources().getDrawable(flagDrawableResID));
+                iv.setImageDrawable(getResources().getDrawable(flagDrawableResID)); // flag img when currency chosen
 
                 picker.dismiss();
             }
@@ -136,10 +126,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSelectCurrency(String name, String code, String symbol, int flagDrawableResID) {
                 TextView currency2 = findViewById(R.id.currency_code_2);
-                currency2.setText(code);
+                currency2.setText(code); // sets the currency code when chosen
 
                 ImageView iv = findViewById(R.id.flag_2);
-                iv.setImageDrawable(getResources().getDrawable(flagDrawableResID));
+                iv.setImageDrawable(getResources().getDrawable(flagDrawableResID)); //flag img when currency chosen
 
                 picker.dismiss();
             }
@@ -159,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
         downloadRates(countryCode1, countryCode2);
     }
 
-    //gets the data from url using ion android library
+    //gets the data from 'Currency Layer' url using ion android library
     public void downloadRates(final String countryCode1, final String countryCode2) {
 
         TextView tv = findViewById(R.id.date);
@@ -171,8 +161,7 @@ public class MainActivity extends AppCompatActivity {
                 .setCallback(new FutureCallback<String>() {
                     @Override
                     public void onCompleted(Exception e, String result) {
-                        // process result here
-                        // try/catch because if amount to convert is empty then cannot run
+                        // try/catch because if amount to convert is empty then does run
                         try {
                             processResults(result, countryCode1, countryCode2);
                         } catch (Exception e1) {
@@ -218,11 +207,9 @@ public class MainActivity extends AppCompatActivity {
             usd_to_snd_curr = Double.parseDouble(result.substring(newIndex2, newIndex2 + 7));
         }
 
-        // divided 1 by "usd_to_fst_curr" to find value to multiply with "usd_to_snd_curr"
-        double normaliser = (1.0 / usd_to_fst_curr);
-
-        // this value is the exchange rate of the first currency and the second
-        double exchangeRate = normaliser * usd_to_snd_curr;
+        // this value is the exchange rate between the first currency and the second
+        // (1 / usd_to_fst_curr) because simultaneous equations
+        double exchangeRate = (1.0 / usd_to_fst_curr) * usd_to_snd_curr;
 
         // amount that user wants to convert
         // must multiply this by "fst_curr_to_snd_curr"
