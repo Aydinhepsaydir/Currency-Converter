@@ -222,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
         answer = Math.round(answer * 100);
         String roundedAnswer = "" + answer/100;
 
-        EditText ed = findViewById(R.id.amount_2);
+        TextView ed = findViewById(R.id.amount_2);
         ed.setText(roundedAnswer);
     }
 
